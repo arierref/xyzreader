@@ -3,6 +3,7 @@ package com.example.xyzreader.remote;
 import android.util.Log;
 
 import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.OkUrlFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,13 +16,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class RemoteEndpointUtil {
-    private static final String TAG = "RemoteEndpointUtil";
+    private static final String TAG = "XYZReader";
 
     private RemoteEndpointUtil() {
     }
 
     public static JSONArray fetchJsonArray() {
-        String itemsJson = null;
+        String itemsJson;
         try {
             itemsJson = fetchPlainText(Config.BASE_URL);
         } catch (IOException e) {
@@ -53,7 +54,7 @@ public class RemoteEndpointUtil {
 
         try {
             OkHttpClient client = new OkHttpClient();
-            HttpURLConnection conn = client.open(url);
+            HttpURLConnection conn = new OkUrlFactory(client).open(url);
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             in = conn.getInputStream();
             byte[] buffer = new byte[1024];

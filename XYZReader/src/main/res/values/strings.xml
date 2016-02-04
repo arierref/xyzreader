@@ -8,5 +8,8 @@
     <string name="action_share">Share</string>
 
     <string name="up">Up</string>
+    <string name="backdrop_shared_element_transition">backdrop_image</string>
+    <string name="backdrop_image_description">Backdrop image of the article</string>
+    <string name="thumbnail_image_description">Thumbnail image</string>
 
 </resources>
